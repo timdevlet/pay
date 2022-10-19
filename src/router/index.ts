@@ -1,9 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import WithGuest from "../views/WithGuest.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: "/with-guest",
+      name: "with-guest",
+      component: WithGuest,
+    },
     {
       path: "/",
       name: "home",

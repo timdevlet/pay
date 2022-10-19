@@ -1,9 +1,16 @@
 <script setup lang="ts">
-import TheWelcome from "../components/TheWelcome.vue";
+import PayForm from "../components/PayForm.vue";
+import { useCounterStore } from "../stores/counter";
+
+const store = useCounterStore();
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <PayForm
+    :price="2000"
+    :order-id="store.orderId"
+    description="Оплата встречи гении и аутсайдеры. Один гость - 2000 рублей"
+    title="Гении и аутсайдеры"
+    title2="Один гость 😊"
+  />
 </template>
