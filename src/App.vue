@@ -8,20 +8,23 @@ export default {
     isSignIn() {
       const body = document.body;
 
-      if (this.$route.path === '/with-guest') {
+      if (this.$route.path === "/with-guest") {
         body.classList.add("MyClass");
       } else {
         body.classList.remove("MyClass");
       }
 
-      return this.$route.path === '/with-guest';
-    }
-  }
-}</script>
+      return this.$route.path === "/with-guest";
+    },
+  },
+};
+</script>
 
 <template>
   <header>
-    <div class="wrapper" :class="isSignIn ? 'a' : 'b'">
+    <img src="/src/assets/logo.png" class="logo" alt="vika devlet logo" />
+
+    <div class="wrapper">
       <nav>
         <RouterLink to="/">Иду один</RouterLink>
         <RouterLink to="/with-guest">Иду с другом</RouterLink>
@@ -30,9 +33,16 @@ export default {
   </header>
 
   <RouterView />
+  <span v-if="isSignIn"></span>
 </template>
 
-<style   lang="scss">
+<style lang="scss">
+.logo {
+  position: fixed;
+  top: 0px;
+  width: 30px;
+}
+
 .MyClass {
   background-color: #e9e3db34;
 }

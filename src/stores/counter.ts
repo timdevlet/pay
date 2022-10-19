@@ -5,8 +5,9 @@ export const useCounterStore = defineStore("counter", () => {
   const date = new Date();
 
   const makeid = (length: number) => {
-    let result = '';
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
     for (let i = 0; i < length; i++) {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -26,7 +27,9 @@ export const useCounterStore = defineStore("counter", () => {
 
   const count = ref(0);
 
-  const orderId = `${formatMap.yy}${formatMap.mm}${formatMap.dd}-${formatMap.hh}-${formatMap.ii}-${formatMap.ss}-${makeid(3).toUpperCase()}`;
+  const orderId = `${formatMap.yy}${formatMap.mm}${formatMap.dd}-${
+    formatMap.hh
+  }-${formatMap.ii}-${formatMap.ss}-${makeid(3).toUpperCase()}`;
 
   const doubleCount = computed(() => count.value * 2);
   function increment() {

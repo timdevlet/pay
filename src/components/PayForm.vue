@@ -14,24 +14,62 @@ defineProps<{
       <div class="description">
         <div class="description-small">Оплата встречи:</div>
         <div>{{ title }}</div>
-        <div class="price">{{ price }} <span>Рублей / {{ title2 }}</span>
+        <div class="price">
+          {{ price }} <span>Рублей / {{ title2 }}</span>
         </div>
-
       </div>
 
-
-
       <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-        <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1558444782811">
-        <input class="tinkoffPayRow" type="hidden" name="frame" value="false">
-        <input class="tinkoffPayRow" type="hidden" name="language" value="ru">
-        <input class="tinkoffPayRow" placeholder="Сумма заказа" name="amount" :value="price" type="hidden" required>
-        <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" :value="orderId">
-        <input class="tinkoffPayRow" type="hidden" :placeholder="description" name="description" disabled>
-        <input class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name" required>
-        <input class="tinkoffPayRow" type="text" placeholder="E-mail" name="email">
-        <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" name="phone">
-        <input class="tinkoffPayRow btn" type="submit" value="К оплате">
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          name="terminalkey"
+          value="1558444782811"
+        />
+        <input class="tinkoffPayRow" type="hidden" name="frame" value="false" />
+        <input class="tinkoffPayRow" type="hidden" name="language" value="ru" />
+        <input
+          class="tinkoffPayRow"
+          placeholder="Сумма заказа"
+          name="amount"
+          :value="price"
+          type="hidden"
+          required
+        />
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          placeholder="Номер заказа"
+          name="order"
+          :value="orderId"
+        />
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          :placeholder="description"
+          name="description"
+          disabled
+        />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="ФИО плательщика"
+          name="name"
+          required
+        />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="E-mail"
+          name="email"
+        />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="Контактный телефон"
+          name="phone"
+        />
+        <input class="tinkoffPayRow btn" type="submit" value="К оплате" />
       </form>
     </div>
   </div>
@@ -54,7 +92,8 @@ defineProps<{
 div.description {
   font-size: 30px;
   font-weight: bold;
-  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Segoe UI", "Helvetica Neue", sans-serif;
   padding-left: 5px;
   margin: 0px;
 
@@ -77,7 +116,8 @@ div.description {
 input[type="text"] {
   color: rgba(0, 0, 0, 0.8);
   display: block;
-  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Segoe UI", "Helvetica Neue", sans-serif;
   font-size: 15px;
   border: 0;
   font-style: normal;
@@ -86,7 +126,7 @@ input[type="text"] {
 
   line-height: 24px;
 
-  background-color: #ECF1F7;
+  background-color: #ecf1f7;
 
   text-align: left;
   text-rendering: optimizeLegibility;
@@ -101,7 +141,7 @@ input[type="text"] {
   appearance: none;
 
   background-clip: border-box;
-  background-color: #FFDD2D;
+  background-color: #ffdd2d;
 
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -111,7 +151,8 @@ input[type="text"] {
   color: #332c0cc2;
   cursor: pointer;
   display: block;
-  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Segoe UI", "Helvetica Neue", sans-serif;
+  font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
+    "Segoe UI", "Helvetica Neue", sans-serif;
   font-size: 15px;
   font-stretch: normal;
   font-style: normal;
