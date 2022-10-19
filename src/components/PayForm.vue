@@ -137,7 +137,6 @@ input[type="text"] {
   border: none;
 
   -webkit-font-smoothing: antialiased;
-  -webkit-user-select: none;
   appearance: none;
 
   background-clip: border-box;
