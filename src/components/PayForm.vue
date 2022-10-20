@@ -26,17 +26,59 @@ defineProps<{
       </div>
 
       <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-        <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1558444782811" />
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          name="terminalkey"
+          value="1558444782811"
+        />
         <input class="tinkoffPayRow" type="hidden" name="frame" value="false" />
         <input class="tinkoffPayRow" type="hidden" name="language" value="ru" />
-        <input class="tinkoffPayRow" placeholder="Сумма заказа" name="amount" :value="price" type="hidden" required />
-        <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" :value="orderId" />
-        <input class="tinkoffPayRow" type="hidden" :placeholder="description" name="description" disabled />
+        <input
+          class="tinkoffPayRow"
+          placeholder="Сумма заказа"
+          name="amount"
+          :value="price"
+          type="hidden"
+          required
+        />
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          placeholder="Номер заказа"
+          name="order"
+          :value="orderId"
+        />
+        <input
+          class="tinkoffPayRow"
+          type="hidden"
+          :placeholder="description"
+          name="description"
+          disabled
+        />
 
-        <input class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name" v-model="form.fio"
-          required />
-        <input class="tinkoffPayRow" type="text" placeholder="E-mail" v-model="form.email" name="email" />
-        <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" v-model="form.phone" name="phone" />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="ФИО плательщика"
+          name="name"
+          v-model="form.fio"
+          required
+        />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="E-mail"
+          v-model="form.email"
+          name="email"
+        />
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="Контактный телефон"
+          v-model="form.phone"
+          name="phone"
+        />
         <input class="tinkoffPayRow btn" type="submit" value="К оплате" />
       </form>
     </div>
