@@ -36,5 +36,11 @@ export const useCounterStore = defineStore("counter", () => {
     count.value++;
   }
 
-  return { makeid, orderId, count, doubleCount, increment };
+  const form = {
+    fio: "",
+    email: "",
+    phone: "",
+  };
+
+  return { makeid, orderId, count, doubleCount, increment, form };
 });

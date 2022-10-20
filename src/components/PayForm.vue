@@ -5,6 +5,11 @@ defineProps<{
   description: string;
   price: number;
   orderId: string;
+  form: {
+    fio: string;
+    email: string;
+    phone: string;
+  };
 }>();
 </script>
 
@@ -15,60 +20,23 @@ defineProps<{
         <div class="description-small">Оплата встречи:</div>
         <div>{{ title }}</div>
         <div class="price">
-          {{ price }} <span>Рублей / {{ title2 }}</span>
+          {{ price }}<span class="description-price">Рублей</span>
+          <div class="description-price-details"># {{ title2 }}</div>
         </div>
       </div>
 
       <form name="TinkoffPayForm" onsubmit="pay(this); return false;">
-        <input
-          class="tinkoffPayRow"
-          type="hidden"
-          name="terminalkey"
-          value="1558444782811"
-        />
+        <input class="tinkoffPayRow" type="hidden" name="terminalkey" value="1558444782811" />
         <input class="tinkoffPayRow" type="hidden" name="frame" value="false" />
         <input class="tinkoffPayRow" type="hidden" name="language" value="ru" />
-        <input
-          class="tinkoffPayRow"
-          placeholder="Сумма заказа"
-          name="amount"
-          :value="price"
-          type="hidden"
-          required
-        />
-        <input
-          class="tinkoffPayRow"
-          type="hidden"
-          placeholder="Номер заказа"
-          name="order"
-          :value="orderId"
-        />
-        <input
-          class="tinkoffPayRow"
-          type="hidden"
-          :placeholder="description"
-          name="description"
-          disabled
-        />
-        <input
-          class="tinkoffPayRow"
-          type="text"
-          placeholder="ФИО плательщика"
-          name="name"
-          required
-        />
-        <input
-          class="tinkoffPayRow"
-          type="text"
-          placeholder="E-mail"
-          name="email"
-        />
-        <input
-          class="tinkoffPayRow"
-          type="text"
-          placeholder="Контактный телефон"
-          name="phone"
-        />
+        <input class="tinkoffPayRow" placeholder="Сумма заказа" name="amount" :value="price" type="hidden" required />
+        <input class="tinkoffPayRow" type="hidden" placeholder="Номер заказа" name="order" :value="orderId" />
+        <input class="tinkoffPayRow" type="hidden" :placeholder="description" name="description" disabled />
+
+        <input class="tinkoffPayRow" type="text" placeholder="ФИО плательщика" name="name" v-model="form.fio"
+          required />
+        <input class="tinkoffPayRow" type="text" placeholder="E-mail" v-model="form.email" name="email" />
+        <input class="tinkoffPayRow" type="text" placeholder="Контактный телефон" v-model="form.phone" name="phone" />
         <input class="tinkoffPayRow btn" type="submit" value="К оплате" />
       </form>
     </div>
@@ -95,7 +63,7 @@ div.description {
   font-family: tuiText, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
     "Segoe UI", "Helvetica Neue", sans-serif;
   padding-left: 5px;
-  margin: 0px;
+  margin: 0px 0px 15px 0px;
 
   &-small {
     font-size: 17px;
@@ -108,8 +76,14 @@ div.description {
     font-weight: 400;
 
     span {
-      font-size: 20px;
+      font-size: 22px;
     }
+  }
+
+  &-price-details {
+    margin-top: -10px;
+    font-size: 18px;
+    color: rgb(125, 125, 125);
   }
 }
 

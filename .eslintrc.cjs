@@ -9,6 +9,9 @@ module.exports = {
     "@vue/eslint-config-typescript",
     "@vue/eslint-config-prettier",
   ],
+  rules: {
+    "vue/no-mutating-props": "off",
+  },
   parserOptions: {
     ecmaVersion: "latest",
   },
