@@ -54,6 +54,6 @@ export const useCounterStore = defineStore("counter", () => {
 
     return 0;
   });
- 
+
   return { makeid, orderId, count, doubleCount, increment, form, discount };
 });

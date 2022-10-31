@@ -15,7 +15,7 @@ const props = defineProps<{
     promocode: string;
   };
 }>();
- 
+
 const priceWithDiscount = computed({
   get() {
     if (!props.discount || props.discount <= 0) {
@@ -45,7 +45,8 @@ function numberWithSpaces(x: number) {
         <div class="description-small"></div>
         <div class="description-title">{{ title }}</div>
         <div class="price">
-          {{ numberWithSpaces(priceWithDiscount) }}<span class="description-price">₽</span>
+          {{ numberWithSpaces(priceWithDiscount)
+          }}<span class="description-price">₽</span>
           <div class="description-price-details"># {{ title2 }}</div>
         </div>
       </div>

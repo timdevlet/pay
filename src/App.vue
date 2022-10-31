@@ -26,12 +26,24 @@ export default {
 
     <div class="wrapper">
       <nav>
-        <RouterLink to="/one-time"><span class="text">Разовая консультация</span><br /><span class="desc">1.5
-            часа</span></RouterLink>
-        <RouterLink to="/group"><span class="text">Групповое наставничество</span><br /><span class="desc">2
-            месяца</span></RouterLink>
-        <RouterLink to="/personal"><span class="text">Индивидуальное сопровождение</span><br /><span class="desc">2
-            месяца</span></RouterLink>
+        <RouterLink to="/one-time"
+          ><span class="text">Разовая консультация</span><br /><span
+            class="desc"
+            >1.5 часа</span
+          ></RouterLink
+        >
+        <RouterLink to="/group"
+          ><span class="text">Групповое наставничество</span><br /><span
+            class="desc"
+            >2 месяца</span
+          ></RouterLink
+        >
+        <RouterLink to="/personal"
+          ><span class="text">Индивидуальное сопровождение</span><br /><span
+            class="desc"
+            >2 месяца</span
+          ></RouterLink
+        >
       </nav>
     </div>
   </header>
@@ -69,7 +81,6 @@ nav {
     border-bottom: 2px solid rgba(0, 0, 0, 0);
     line-height: 1.2;
     border-radius: 4px;
-
 
     .desc {
       display: inline-block;
