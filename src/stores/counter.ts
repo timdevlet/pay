@@ -36,11 +36,24 @@ export const useCounterStore = defineStore("counter", () => {
     count.value++;
   }
 
-  const form = {
+  const form = ref({
     fio: "",
     email: "",
     phone: "",
-  };
+    promocode: "",
+  });
 
-  return { makeid, orderId, count, doubleCount, increment, form };
+  const discount = computed(() => {
+    if (form.value.promocode == "mango") {
+      return 20000;
+    }
+
+    if (form.value.promocode == "orange") {
+      return 30000;
+    }
+
+    return 0;
+  });
+ 
+  return { makeid, orderId, count, doubleCount, increment, form, discount };
 });

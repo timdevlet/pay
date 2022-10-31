@@ -1,26 +1,51 @@
 <script setup lang="ts">
-defineProps<{
+import { computed } from "vue";
+
+const props = defineProps<{
   title: string;
   title2: string;
   description: string;
   price: number;
   orderId: string;
+  discount: number;
   form: {
     fio: string;
     email: string;
     phone: string;
+    promocode: string;
   };
 }>();
+ 
+const priceWithDiscount = computed({
+  get() {
+    if (!props.discount || props.discount <= 0) {
+      return props.price;
+    }
+
+    if (props.price - props.discount <= 0) {
+      return props.price;
+    }
+
+    return props.price - props.discount;
+  },
+  set() {},
+});
+
+function numberWithSpaces(x: number) {
+  let parts = x.toString().split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return parts.join(".");
+}
 </script>
 
 <template>
   <div class="about">
     <div class="TinkoffPayFormContainer">
       <div class="description">
-        <div class="description-small">Оплата встречи:</div>
-        <div>{{ title }}</div>
+        <div class="description-small"></div>
+        <div class="description-title">{{ title }}</div>
         <div class="price">
-          {{ price }}<span class="description-price">Рублей</span>
+          {{ numberWithSpaces(priceWithDiscount) }}<span class="description-price">₽</span>
           <div class="description-price-details"># {{ title2 }}</div>
         </div>
       </div>
@@ -38,7 +63,7 @@ defineProps<{
           class="tinkoffPayRow"
           placeholder="Сумма заказа"
           name="amount"
-          :value="price"
+          :value="priceWithDiscount"
           type="hidden"
           required
         />
@@ -56,7 +81,6 @@ defineProps<{
           name="description"
           disabled
         />
-
         <input
           class="tinkoffPayRow"
           type="text"
@@ -79,6 +103,15 @@ defineProps<{
           v-model="form.phone"
           name="phone"
         />
+
+        <input
+          class="tinkoffPayRow"
+          type="text"
+          placeholder="Промокод"
+          v-model="form.promocode"
+          name="promocode"
+        />
+
         <input class="tinkoffPayRow btn" type="submit" value="К оплате" />
       </form>
     </div>
@@ -106,6 +139,11 @@ div.description {
     "Segoe UI", "Helvetica Neue", sans-serif;
   padding-left: 5px;
   margin: 0px 0px 15px 0px;
+
+  &-title {
+    line-height: 1.2;
+    max-width: 200px;
+  }
 
   &-small {
     font-size: 17px;

@@ -7,12 +7,12 @@ const store = useCounterStore();
 
 <template>
   <PayForm
-    :price="3000"
+    :price="150000"
     :order-id="store.orderId"
     :form="store.form"
-    :discount="0"
-    description="Оплата встречи гении и аутсайдеры. Два гостя - 3000 рублей."
-    title="Гении и аутсайдеры"
-    title2="Два гостя 😀+😆"
+    :discount="store.discount"
+    description="Групповое наставничество"
+    title="Групповое наставничество"
+    title2="2 месяца"
   />
 </template>
