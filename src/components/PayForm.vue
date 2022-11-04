@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
+import Timer from "../components/Timer";
+import moment from "moment";
 
 const props = defineProps<{
   title: string;
@@ -7,34 +9,48 @@ const props = defineProps<{
   description: string;
   price: number;
   orderId: string;
-  discount: number;
   form: {
     fio: string;
     email: string;
     phone: string;
     promocode: string;
+    validPromocode: any;
   };
 }>();
 
 const priceWithDiscount = computed({
   get() {
-    if (!props.discount || props.discount <= 0) {
+    const promocode = props.form.validPromocode;
+    if (!promocode || promocode?.value <= 0) {
       return props.price;
     }
 
-    if (props.price - props.discount <= 0) {
+    if (props.price - promocode.value <= 0) {
       return props.price;
     }
 
-    return props.price - props.discount;
+    if (props.price - promocode.value > 0) {
+      return props.price - promocode.value;
+    }
+
+    return props.price;
   },
   set() {},
 });
+
+const TINKOFF_ID='1667218758791'
 
 function numberWithSpaces(x: number) {
   let parts = x.toString().split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   return parts.join(".");
+}
+
+function format(x: number) {
+  if (x < 10) {
+    return `0${x}`;
+  }
+  return x;
 }
 </script>
 
@@ -56,7 +72,7 @@ function numberWithSpaces(x: number) {
           class="tinkoffPayRow"
           type="hidden"
           name="terminalkey"
-          value="1558444782811"
+          :value="TINKOFF_ID"
         />
         <input class="tinkoffPayRow" type="hidden" name="frame" value="false" />
         <input class="tinkoffPayRow" type="hidden" name="language" value="ru" />
@@ -113,6 +129,20 @@ function numberWithSpaces(x: number) {
           name="promocode"
         />
 
+        <Timer
+          key="timer"
+          v-if="form.validPromocode?.until"
+          :time="
+            moment(form.validPromocode?.until).diff(moment(), 'second') * 1000
+          "
+          v-slot="{ hours, minutes, seconds }"
+          style="margin-left: 10px"
+        >
+          До конца действия промокода {{ format(hours) }}:{{
+            format(minutes)
+          }}:{{ format(seconds) }}
+        </Timer>
+ 
         <input class="tinkoffPayRow btn" type="submit" value="К оплате" />
       </form>
     </div>
@@ -240,10 +270,5 @@ input[type="text"] {
 }
 
 @media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
 }
 </style>

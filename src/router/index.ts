@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import OneGuest from "../views/OneGuest.vue";
 import HomeView from "../views/HomeView.vue";
 import WithGuest from "../views/WithGuest.vue";
 import OneTime from "../views/OneTime.vue";
@@ -17,6 +18,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+    },
+    {
+      path: "/",
+      name: "one-guest",
+      component: OneGuest,
     },
     {
       path: "/one-time",

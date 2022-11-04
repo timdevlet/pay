@@ -23,29 +23,6 @@ export default {
 <template>
   <header>
     <img src="/src/assets/logo.png" class="logo" alt="vika devlet logo" />
-
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/one-time"
-          ><span class="text">Разовая консультация</span><br /><span
-            class="desc"
-            >1.5 часа</span
-          ></RouterLink
-        >
-        <RouterLink to="/group"
-          ><span class="text">Групповое наставничество</span><br /><span
-            class="desc"
-            >2 месяца</span
-          ></RouterLink
-        >
-        <RouterLink to="/personal"
-          ><span class="text">Индивидуальное сопровождение</span><br /><span
-            class="desc"
-            >2 месяца</span
-          ></RouterLink
-        >
-      </nav>
-    </div>
   </header>
 
   <RouterView />
@@ -101,21 +78,21 @@ nav {
   }
 }
 
+b {
+  font-weight: bold;
+}
+
 @media (min-width: 804px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+  // header {
+  //   display: flex;
+  //   place-items: center;
+  //   padding-right: calc(var(--section-gap) / 2);
+  // }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+  // header .wrapper {
+  //   display: flex;
+  //   place-items: flex-start;
+  //   flex-wrap: wrap;
+  // }
 }
 </style>

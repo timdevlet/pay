@@ -1,18 +1,9 @@
-<script setup lang="ts">
-import PayForm from "../components/PayForm.vue";
-import { useCounterStore } from "../stores/counter";
-
-const store = useCounterStore();
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <PayForm
-    :price="2000"
-    :order-id="store.orderId"
-    :form="store.form"
-    :discount="0"
-    description="Оплата встречи гении и аутсайдеры. Один гость - 2000 рублей"
-    title="Гении и аутсайдеры"
-    title2="Один гость 😊"
-  />
+  <h1>Вика Девлет</h1>
+
+  <div>
+    Перейдите по полученной <b>персональной ссылке</b> чтобы совершить оплату...
+  </div>
 </template>

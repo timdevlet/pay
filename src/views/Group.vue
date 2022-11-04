@@ -10,7 +10,6 @@ const store = useCounterStore();
     :price="150000"
     :order-id="store.orderId"
     :form="store.form"
-    :discount="store.discount"
     description="Групповое наставничество"
     title="Групповое наставничество"
     title2="2 месяца"
